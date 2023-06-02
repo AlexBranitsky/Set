@@ -1,0 +1,10 @@
+
+.nav{
+    grid-area: n;
+    background-color: #494848;
+    margin-top: 10px;
+}
+.item a{
+    color: aliceblue;
+    text-decoration: none;
+}

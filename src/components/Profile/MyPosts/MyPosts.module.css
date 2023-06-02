@@ -1,0 +1,13 @@
+.myPosts{
+    font-weight: 600;
+}
+button{
+    border-radius: 50px;
+    font-weight: 700;
+    box-shadow: 3px 5px 9px 2px rgba(117, 115, 115, 0.35);
+    background: rgb(55, 55, 55);
+    background: linear-gradient(0deg, rgba(55, 55, 55, 0.9528405112044818) 0%, rgba(176, 171, 171, 1) 100%);
+    color: white;
+    width: 100px;
+    height: 30px;
+}
