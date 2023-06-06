@@ -3,20 +3,19 @@ import { followAC, setUsers, unFollowAC } from "../../redux/users_redux";
 import { Users } from "./Users";
 
 let mapStatetoProps = (state)=>{
-    console.log(state)
     return{
         users: state.usersPage.users
     }
 };
 let mapDispatchToProps = (dispatch)=>{
     return{
-        FOLLOW: (userId)=>{
+        follow: (userId)=>{
             dispatch(followAC(userId));
         },
-        UNFOLLOW: (userId)=>{
+        unfollow: (userId)=>{
             dispatch(unFollowAC(userId));
         },
-        SET_USERS: (users)=>{
+        setUsers: (users)=>{
             dispatch(setUsers(users));
         }
     }

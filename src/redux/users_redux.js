@@ -7,7 +7,7 @@ let initialState = {
         {
             id: '1',
             followed:true,
-            avaphoto: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrpZJ2nKhVHQM_pzQB5EUvI-az29L-pduU4YearTRMig&s',
+            avaphoto: <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrpZJ2nKhVHQM_pzQB5EUvI-az29L-pduU4YearTRMig&s" alt="foto"/>,
             fullname: 'Alex',
             status: 'I am boss',
             location: { cityname: 'Minsk', country: 'Belarus' },
@@ -15,7 +15,7 @@ let initialState = {
         {
             id: '2',
             followed:false,
-            avaphoto: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrpZJ2nKhVHQM_pzQB5EUvI-az29L-pduU4YearTRMig&s',
+            avaphoto: <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrpZJ2nKhVHQM_pzQB5EUvI-az29L-pduU4YearTRMig&s" alt="foto"/>,
             fullname: 'Alexfolf',
             status: 'I am boss really',
             location: { cityname: 'Minsk', country: 'Belarus' },
@@ -23,7 +23,7 @@ let initialState = {
         {
             id: '3',
             followed:true,
-            avaphoto: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrpZJ2nKhVHQM_pzQB5EUvI-az29L-pduU4YearTRMig&s',
+            avaphoto: <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrpZJ2nKhVHQM_pzQB5EUvI-az29L-pduU4YearTRMig&s" alt="foto"/>,
             fullname: 'Alexandra',
             status: 'I am boss too',
             location: { cityname: 'Minsk', country: 'Belarus' },
@@ -38,7 +38,7 @@ export const usersReducer = (state = initialState, action) => {
                 ...state,
                 users:state.users.map(user=>{
                     if(user.id === action.userId){
-                        return{...user, followed:true}
+                        return{...user, followed:false}
                     }
                     return user;
                 })
@@ -48,26 +48,22 @@ export const usersReducer = (state = initialState, action) => {
                 ...state,
                 users:state.users.map(user=>{
                     if(user.id === action.userId){
-                        return{...user, followed:false}
+                        return{...user, followed:true}
                     }
                     return user;
                 })
             }
-        case SET_USERS:
-            return{
-                ...state, users:[...state.users, ...action.users]
-            }
+        case SET_USERS:{
+            return{...state, users:[...state.users, ...action.users]}
+        }
+            
         default: return state;
     }
 
 
 }
-export const followAC = (userId) => {
-    return ({ type: FOLLOW, userId })
-}
-export const unFollowAC = (userId) => {
-    return ({ type: UNFOLLOW, userId })
-}
-export const setUsers = (users) =>{
-    return({type: SET_USERS, users})
-}
+export const followAC = (userId) => ({ type: FOLLOW, userId })
+
+export const unFollowAC = (userId) =>({ type: UNFOLLOW, userId })
+
+export const setUsers = (users) =>({type: SET_USERS, users})
