@@ -6,8 +6,24 @@
     display: grid;
     grid-template-rows: 100px 1fr;
     grid-template-columns: 2fr 8fr 2fr;
+    margin-top: 20px;
 }
 .users button{
     font-size: 12px;
     height: 18px;
+}
+.pages{
+    font-weight: 800;
+    color: rgb(68, 67, 67);
+    margin-left: 3px;
+}
+.pages_active{
+    color: red;
+}
+.number span{
+    margin-right: 5px;
+}
+.preloader{
+    height: 60px;
+    width: 60px;
 }

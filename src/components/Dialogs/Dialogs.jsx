@@ -6,6 +6,7 @@ import { Message } from "./Message/Message";
 
 
 
+
 export const Dialogs = (props) => {
 
     let dialogElement = props.dialog.map((dialog)=> <DialogItem name={dialog.name} key={dialog.id} id={dialog.id}/>)
@@ -20,6 +21,7 @@ export const Dialogs = (props) => {
         props.updateNewMessageTextActionCreator(newMessage)
         
     }
+
     return (
         <div>
             <div className={s.dialogs}>
