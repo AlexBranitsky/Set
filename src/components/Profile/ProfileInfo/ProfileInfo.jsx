@@ -10,7 +10,7 @@ export const ProfileInfo = (props) => {
         <div className={s.content_info}>
             <div><img src='https://klike.net/uploads/posts/2019-06/medium/1559370679_19.jpg' alt='foto'></img></div>
             <div><img src={props.profile.photos.small} alt="foto" /></div>
-            <div><ProfileStatus status='Hello my friends'/></div>
+            <div><ProfileStatus status={props.status} updateStatus={props.updateStatus}/></div>
             <div>{props.profile.aboutMe}</div>
             <div>{props.profile.fullName}</div>
         </div>
