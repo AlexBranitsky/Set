@@ -21,9 +21,16 @@ export class ProfileStatus extends React.Component{
         this.props.updateStatus(this.state.status)
     }
     changeStatus=(e)=>{
-        this.setState(()=>({
-            status:e.target.value
-        }))
+        this.setState({
+            status: e.currentTarget.value
+        })
+    }
+    componentDidUpdate(prevProps, prevState){
+        if (prevProps.state !== this.props.state){
+            this.setState({
+                status: this.props.status
+            })
+        }
     }
         
     render(){
