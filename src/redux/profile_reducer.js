@@ -15,7 +15,7 @@ let initialState = {
     ],
     newPostText: 'Yo',
     profile: null,
-    status:''
+    status:'',
     
     
 }
@@ -65,18 +65,16 @@ export const getProfile =(userId) => {
                 dispatch(setUsersProfile(response.data))
             })
 }}
-export const getUserStatus =(userId) => {
-    return (dispatch)=>{
+export const getUserStatus =(userId) => (dispatch) => {
     profileAPI.getUserStatus(userId)
             .then(response => {
                 dispatch(setUserStatus(response.data))
             })
-}}
-export const updateUserStatus =(status) => {
-    return (dispatch)=>{
+}
+export const updateUserStatus =(status) => (dispatch)=> {
     profileAPI.updateUserStatus(status)
             .then(response => {
-                if(response.resultCode === 0)
-                dispatch(setUserStatus(response.data))
+                if(response.data.resultCode === 0)
+                dispatch(setUserStatus(status))
             })
-}}
+}
