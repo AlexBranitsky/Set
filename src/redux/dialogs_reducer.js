@@ -1,5 +1,5 @@
 const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_NEW_MESSAGE_TEXT_ACTION_CREATOR = 'UPDATE-NEW-MESSAGE-TEXT';
+// const UPDATE_NEW_MESSAGE_TEXT_ACTION_CREATOR = 'UPDATE-NEW-MESSAGE-TEXT';
 
 let initialState = {
     dialogsData: [
@@ -12,32 +12,32 @@ let initialState = {
         { id: '2', message: 'Vol' },
         { id: '3', message: 'Alexand' },
     ],
-    newMessageText: 'Hello',
+    // newMessageText: 'Hello',
 }
 
-export const dialogsReducer = (state = initialState, action)=>{
-   let stateCopy;
+export const dialogsReducer = (state = initialState, action) => {
+    let stateCopy;
     switch (action.type) {
         case ADD_MESSAGE:
-            stateCopy={
+            stateCopy = {
                 ...state,
-                messagesData: [...state.messagesData,{id: '4',message: state.newMessageText}],
-                newMessageText: '',
+                messagesData: [...state.messagesData, { id: '4', message: action.newMessage }],
+                // newMessageText: '',
             }
             return stateCopy;
-            
-        case UPDATE_NEW_MESSAGE_TEXT_ACTION_CREATOR:
-            stateCopy={
-                ...state,
-                newMessageText: action.newText,
-            }
-            return stateCopy;
-            default: return state;
+
+        // case UPDATE_NEW_MESSAGE_TEXT_ACTION_CREATOR:
+        //     stateCopy={
+        //         ...state,
+        //         newMessageText: action.newText,
+        //     }
+        //     return stateCopy;
+        default: return state;
     }
 }
-export const addMessageActionCreator = ()=>{
-    return ({type: ADD_MESSAGE})
+export const addMessageActionCreator = (newMessage) => {
+    return ({ type: ADD_MESSAGE, newMessage: newMessage })
 }
-export const updateNewMessageTextActionCreator = (text)=>{
-return({type: UPDATE_NEW_MESSAGE_TEXT_ACTION_CREATOR, newText:text} )
-}
+// export const updateNewMessageTextActionCreator = (text)=>{
+// return({type: UPDATE_NEW_MESSAGE_TEXT_ACTION_CREATOR, newText:text} )
+// }

@@ -10,10 +10,10 @@ export const MyPosts = (props) => {
 
     // let newPostElement = React.createRef();
 
-    // let addPost = () => {
-    //     // props.dispatch(addPostActionCreator())
-    //     props.addPostActionCreator()
-    // }
+    let addPost = (newPost) => {
+        //     // props.dispatch(addPostActionCreator())
+        props.addPostActionCreator(newPost)
+    }
 
     // let onPostChange = () => {
     //     let text = newPostElement.current.value;
@@ -21,14 +21,14 @@ export const MyPosts = (props) => {
     //     props.updateNewPostTextActionCreator(text)
     //     //     // props.dispatch(action)
     // }
-    const onSubmit = (formData)=>{
-        console.log(formData)
+    const onSubmit = (formData) => {
+        addPost(formData.Post)
     }
     return (
         <div className={s.myPosts}>
             My Posts
             <div>
-                <PostReduxForm onSubmit={onSubmit}/>
+                <PostReduxForm onSubmit={onSubmit} />
                 {/* <textarea cols="50" rows="5" ref={newPostElement} value={props.newPostText} onChange={onPostChange}/> */}
                 {/* <div><button onClick={addPost}>Add</button></div> */}
             </div>
@@ -46,7 +46,7 @@ const PostForm = (props) => {
             <div>
                 <button>Send</button>
             </div>
-            
+
         </form>
     )
 }

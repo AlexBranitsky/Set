@@ -7,20 +7,20 @@ import { Field, reduxForm } from 'redux-form'
 
 export const Dialogs = (props) => {
 
-    let dialogElement = props.dialog.map((dialog)=> <DialogItem name={dialog.name} key={dialog.id} id={dialog.id}/>)
-    
-    let messageElement = props.message.map((message)=> <Message message={message.message} key={message.id} id={message.id}/>)
+    let dialogElement = props.dialog.map((dialog) => <DialogItem name={dialog.name} key={dialog.id} id={dialog.id} />)
 
-    // let addMessage = ()=>{
-    //     props.addMessageActionCreator()
-    // }
+    let messageElement = props.message.map((message) => <Message message={message.message} key={message.id} id={message.id} />)
+
+    let addMessage = (newMessage) => {
+        props.addMessageActionCreator(newMessage)
+    }
     // let onMessageChange = (e)=>{
     //     let newMessage = e.target.value;
     //     props.updateNewMessageTextActionCreator(newMessage)
-        
+
     // }
-    const onSubmit = (formData)=>{
-        console.log(formData)
+    const onSubmit = (formData) => {
+        addMessage(formData.Dialog)
     }
     return (
         <div>
@@ -31,7 +31,7 @@ export const Dialogs = (props) => {
                 <div className={s.messages}>
                     {messageElement}
                     <div>
-                        <DialogReduxForm onSubmit={onSubmit}/>
+                        <DialogReduxForm onSubmit={onSubmit} />
                         {/* <div><textarea cols="50" rows="5" onChange={onMessageChange} value={props.newMessage}/></div>
                         <div><button onClick={addMessage}>Add</button></div> */}
                     </div>
@@ -40,8 +40,8 @@ export const Dialogs = (props) => {
         </div>
     )
 };
-const DialogForm = (props)=>{
-    return(
+const DialogForm = (props) => {
+    return (
         <form onSubmit={props.handleSubmit}>
             <div>
                 <Field name="Dialog" component={'textarea'} placeholder={'Enter your message'}></Field>
@@ -52,4 +52,4 @@ const DialogForm = (props)=>{
         </form>
     )
 }
-const DialogReduxForm = reduxForm({form:'Dialog'})(DialogForm)
+const DialogReduxForm = reduxForm({ form: 'Dialog' })(DialogForm)
